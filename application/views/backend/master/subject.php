@@ -256,4 +256,5 @@ function editSubject(id){
        }
      });
 }
+
 </script>
