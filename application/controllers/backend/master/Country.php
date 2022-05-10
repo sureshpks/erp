@@ -19,6 +19,7 @@ class Country extends CI_Controller {
 	}
 
 	public function update(){ 
+		//
 		if($this->input->post()){
 			$id= $this->input->post('hidden_id');
 			$country= $this->input->post('country');
