@@ -28,19 +28,19 @@
                             </div>
                         </div>
                         <div class="widget-content widget-content-area">
-                            <form method="post" onSubmit="return form_validate();" id="academic_form" action="<?php echo base_url();?>index.php/backend/master/academic/update">
+                            <form method="post" onSubmit="return validate('academic_form');" id="academic_form" action="<?php echo base_url();?>index.php/backend/master/academic/update">
                             <input type="hidden" name="hidden_id" value="0" id="hidden_id">
                             <div class="row clearfix">
                                 <div class="col-sm-12">
-                                    <b>Academic Year (YYYY-YYYY)</b>
                                     <div class="form-group">
+                                        <label>Academic Year (YYYY-YYYY)</label>
                                         <input type="text" class="form-control field_required" id="academic_year" name="academic_year">
                                     </div>
                                 </div>
                             </div>
                              <div class="row clearfix">
                                 <div class="col-sm-12">
-                                    <b>Campus Status</b>
+                                    <b>Academic Status</b>
                                     <div class="form-group">
                                         <select class="form-control" name="academic_status" id="academic_status">
                                             <option value="0">Active</option>
@@ -123,27 +123,6 @@ $(document).ready(function(){
         });
     <?php } ?>
 });
-function form_validate(){ 
-    var flag = true;
-    $('#academic_form').find('.field_required').each(function(){ 
-        if($(this).val() == ''){
-             $(this).parent('div').addClass('has-danger');
-             $(this).addClass('forn-control-danger');
-             flag = false;
-             swal({
-                title: "Oops...",
-                text: "Please Enter the Required Field...!",
-                timer: 2000,
-                type: "error",
-                showConfirmButton: false
-             });
-        }else{
-            $(this).parent('div').removeClass('has-danger');
-             $(this).removeClass('forn-control-danger');
-        }
-    });
-    return flag;
-}
 function edit(id){
     $('#popup_title').html('');
     $('#popup_btn').html('');

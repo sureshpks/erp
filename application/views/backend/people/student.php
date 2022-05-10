@@ -167,6 +167,8 @@
             </div>
 
             <div class="modal-body">
+                <form method="post" onSubmit="return validate('student_form');" id="student_form" action="<?php echo base_url();?>index.php/backend/people/student/update">
+                <input type="hidden" name="hidden_id" value="0" id="hidden_id">
                 <ul class="nav nav-tabs  mb-3 mt-3" id="simpletab" role="tablist">
                     <li class="nav-item">
                         <a class="nav-link active" id="general_info-tab" data-toggle="tab" href="#general_info " role="tab" aria-controls="general_info " aria-selected="true">General Information</a>
@@ -184,35 +186,33 @@
                         <div class="row clearfix">
                             <div class="col-md-2">
                                 <div class="form-group">
-                                    <label for="academic">Academic Year <span>*</span></label>
+                                    <label for="academic">Academic Year <span class="err">*</span></label>
                                     <select class="form-control" name="academic">
                                         <option>-Select-</option>
                                     </select>
                                 </div>  
                             </div> 
                             <div class="col-md-2">
-                              <label for="student_id">Campus<span>*</span></label>
+                              <label for="student_id">Campus<span class="err">*</span></label>
                               <select name="campus" id="campus" class="form-control">\
                                 <option>-select</option>
                               </select>
                             </div>
                             <div class="col-md-2">
                                 <div class="form-group">
-                                  <label for="student_id">Student ID <span>*</span></label>
-                                  <input type="text" class="form-control upperCase" id="student_id" name="student_id" />
-                                  <span class="err err_student_id"></span>
+                                  <label for="student_id">Student ID <span class="err">*</span></label>
+                                  <input type="text" class="form-control upperCase field_required" id="student_id" name="student_id" />
                                 </div>  
                             </div> 
                             <div class="col-md-2">
                                 <div class="form-group">
-                                  <label for="student_name">Student Name <span>*</span></label>
+                                  <label for="student_name">Student Name <span class="err">*</span></label>
                                   <input type="text" class="form-control capitalize" id="student_name" name="student_name" />
-                                  <span class="err err_student_name"></span>
                                 </div>
                             </div>
                             <div class="col-md-2">
                                 <div class="form-group">
-                                    <label for="class">Class</label>
+                                    <label for="class">Class<span  class="err">*</span></label>
                                     <select class="form-control" name="class">
                                      <option>-select-</option>
                                     </select>
@@ -231,15 +231,14 @@
                         <div class="row clearfix">
                             <div class="col-md-2">
                                 <div class="form-group">
-                                    <label>DOB <span>*</span></label>
-                                      <input class="form-control pull-right student_dob" name="student_dob" id="datepicker" type="text">
-                                    <span class="err err_student_dob"></span>
+                                    <label>DOB <span class="err">*</span></label>
+                                      <input class="form-control pull-right student_dob" name="student_dob" id="student_dob" type="text">
                                     <!-- /.input group -->
                                 </div>
                             </div><!--// col-md-4 -->
                             <div class="col-md-2">
                               <div class="form-group">
-                                <label for="school">Stream</label>
+                                <label for="school">Stream<span class="err">*</span></label>
                                 <select class="form-control" name="stream">
                                     <option>-select-</option>
                                 </select>
@@ -279,7 +278,7 @@
                             <div class="col-md-3">
                                 <div class="form-group">
                                   <label for="Section">Student Email</label>
-                                  <input type="text" class="form-control" id="student_email" name="student_email" />
+                                  <input type="text" class="form-control field_required" id="student_email" data-id="email" name="student_email" />
                                 </div>
                             </div>
                             <div class="col-md-2">
@@ -322,19 +321,14 @@
                               </div>
                             </div>
                             <div class="col-md-2">
-                                <div class="form-group">
-                                  <label for="Gender">State</label>
-                                  <input type="text" class="form-control getState" name="state" id="state" autocomplete="off" /> 
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row clearfix">
-                            <div class="col-md-2">
                               <div class="form-group">
                                 <label for="Contact No">Religion</label>
                                 <input type="text" class="form-control getReligion" name="religion" id="religion" autocomplete="off" />
                               </div>
                             </div>
+                        </div>
+                        <div class="row clearfix">
+                            
                             <div class="col-md-2">
                               <div class="form-group">
                                 <label for="Contact No">Community</label>
@@ -379,8 +373,6 @@
                               <input type="text" class="form-control" id="staff_name" name="staff_name" readonly="readonly" />
                              </div>
                             </div>
-                        </div>
-                        <div class="row clearfix">
                             <div class="col-md-2">
                                 <div class="form-group">
                                   <label for="Type">Boarding</label>
@@ -391,6 +383,8 @@
                                   </select>
                                 </div>
                             </div>
+                        </div>
+                        <div class="row clearfix">
                             <div class="col-md-1">
                                 <div class="form-group">
                                   <label for="Class">Transport</label>
@@ -434,9 +428,8 @@
                         <div class="row clearfix">
                             <div class="col-md-4">
                                 <div class="form-group">
-                                  <label for="Contact No">Father Name <span>*</span></label>
+                                  <label for="Contact No">Father Name <span  class="err">*</span></label>
                                   <input type="text" class="form-control" name="father_name" id="father_name" />
-                                  <span class="err err_father_name"></span>
                                 </div>
                             </div>
                             <div class="col-md-5">
@@ -447,18 +440,16 @@
                             </div>
                             <div class="col-md-3">
                                 <div class="form-group">
-                                    <label for="Class">Primary Mobile <span>*</span></label>
-                                    <input type="text" class="form-control" name="primary_mobile" id="primary_mobile" data-inputmask='"mask": "9999999999"' data-mask />
-                                    <span class="err err_primary_mobile"></span>
+                                    <label for="Class">Primary Mobile <span  class="err">*</span></label>
+                                    <input type="text" class="form-control field_required" name="primary_mobile" data-id="mobile_no" id="primary_mobile" onkeyup="if(/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'');" />
                                 </div>
                             </div>
                         </div>
                         <div class="row clearfix">
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label for="Contact No">Mother Name <span>*</span></label>
+                                    <label for="Contact No">Mother Name <span  class="err">*</span></label>
                                     <input type="text" class="form-control" name="mother_name" id="mother_name" />
-                                    <span class="err err_mother_name"></span>
                                 </div>
                             </div>
                             <div class="col-md-5">
@@ -470,21 +461,20 @@
                             <div class="col-md-3">
                                 <div class="form-group">
                                     <label for="Class">Secondary Mobile</label>
-                                    <input type="text" class="form-control" name="secondary_mobile" id="secondary_mobile" />
+                                    <input type="text" class="form-control" name="secondary_mobile"  id="secondary_mobile" onkeyup="if(/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'');" />
                                 </div>
                             </div>
                         </div>
                         <div class="row clearfix">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="Class">Permanent Address <span>*</span></label>
+                                    <label for="Class">Permanent Address <span class="err">*</span></label>
                                     <textarea rows="4" name="permanent_addr" id="permanent_addr" class="form-control"></textarea>
-                                    <span class="err err_permanent_addr"></span>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label style="display: inline-block;">Communication Address <span>*</span></label>
+                                    <label style="display: inline-block;">Communication Address <span class="err">*</span></label>
                                     <div class="checkbox" style="position: relative;
                                         display: inline-block; margin-top:0px; margin-bottom: 0px;">
                                         <label>
@@ -493,16 +483,14 @@
                                     </div>
 
                                     <textarea rows="4" class="form-control" name="comm_addr" id="comm_addr"></textarea>
-                                    <span class="err err_comm_addr"></span>
                                 </div>
                             </div>
                         </div>
                         <div class="row clearfix">
                             <div class="col-md-5">
                                 <div class="form-group">
-                                    <label for="Class">Primary Email ID <span>*</span></label>
+                                    <label for="Class">Primary Email ID <span class="err">*</span></label>
                                     <input type="text" class="form-control" name="primary_email" id="primary_email" />
-                                    <span class="err err_primary_email"></span>
                                 </div>
                             </div>
                             <div class="col-md-5">
@@ -536,7 +524,7 @@
                             <div class="col-md-2">
                                 <div class="form-group">
                                   <label for="Class">A.Year Admitted</label>
-                                  <input type="text" class="form-control" name="academic_year_admitted" id="academic_year_admitted" data-inputmask='"mask": "9999-9999"' data-mask />
+                                  <input type="text" class="form-control" name="academic_year_admitted" id="academic_year_admitted"/>
                                 </div>
                             </div>
                             <div class="col-md-2">
@@ -557,7 +545,7 @@
                             </div>
                             <div class="col-md-2">
                                 <div class="form-group">
-                                    <label for="Class">Bus No. Morning</label>
+                                    <label for="Class">Van No. Morning</label>
                                     <input type="text" class="form-control" name="van_no_mrng" id="van_no_mrng" />
                                 </div>
                             </div>
@@ -664,7 +652,7 @@
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 <button type="submit" id="popup_btn" class="btn btn-primary">Save</button>
             </div>
-
+            </form>
         </div><!-- modal-content -->
     </div><!-- modal-dialog -->
 </div><!-- modal -->
@@ -677,4 +665,5 @@ function addData(){
     $('#popup_btn').html('SAVE');
     $('#myModal2').modal({ backdrop: 'static',keyboard: true,show: true });
 }
+
 </script>

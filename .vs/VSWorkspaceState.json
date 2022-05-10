@@ -4,10 +4,11 @@
     "\\application",
     "\\application\\controllers",
     "\\application\\controllers\\backend",
+    "\\application\\controllers\\backend\\master",
     "\\application\\views",
     "\\application\\views\\backend",
     "\\application\\views\\backend\\layouts"
   ],
-  "SelectedNode": "\\application\\views\\backend\\layouts\\templete.php",
+  "SelectedNode": "\\application\\controllers\\backend\\master\\Blood_group.php",
   "PreviewInSolutionExplorer": false
 }

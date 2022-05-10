@@ -49,5 +49,57 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         } );
     </script>
     <!-- END PAGE LEVEL CUSTOM SCRIPTS -->
+    <script type="text/javascript">
+        function validate(form_id){
+            var npattern = /^(?:(?:\+|0{0,2})91(\s*[\-]\s*)?|[0]?)?[789]\d{9}$/i;
+            var epattern = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i; 
+            var flag = true;
+            $('#'+form_id).find('.field_required').each(function(){ 
+                if($(this).val() == ''){
+                     $(this).parent('div').addClass('has-danger');
+                     $(this).addClass('forn-control-danger');
+                     flag = false;
+                }else{
+                    if($(this).attr("data-id") == 'email'){
+                        if(!epattern.test($(this).val())){
+                            $(this).parent('div').addClass('has-danger');
+                            $(this).addClass('forn-control-danger');
+                            flag = false; 
+                        }else{
+                            $(this).parent('div').removeClass('has-danger');
+                            $(this).removeClass('forn-control-danger');
+                        }
+                    }else{
+                        $(this).parent('div').removeClass('has-danger');
+                        $(this).removeClass('forn-control-danger');
+                    }
+
+                    if($(this).attr("data-id") == 'mobile_no'){
+                        if(!npattern.test($(this).val())){
+                            $(this).parent('div').addClass('has-danger');
+                            $(this).addClass('forn-control-danger');
+                            flag = false; 
+                        }else{
+                            $(this).parent('div').removeClass('has-danger');
+                            $(this).removeClass('forn-control-danger');
+                        }
+                    }else{
+                        $(this).parent('div').removeClass('has-danger');
+                        $(this).removeClass('forn-control-danger');
+                    }
+                }
+            });
+            if(flag == false){
+                swal({
+                    title: "Oops...",
+                    text: "Please Enter the Required Field...!",
+                    timer: 2000,
+                    type: "error",
+                    showConfirmButton: false
+                });
+            }
+            return flag;
+        }
+    </script>
 </body>
 </html>
