@@ -9,11 +9,11 @@ class Admission_online extends CI_Controller {
 			"title" => "Admission online",
 			"content" => 'frondend/admission_online'
 		);
-		/*$campus = array(
+		$campus = array(
 			"option" => "select",
 			"type"   => "result",
 			"table"  => "erp_campus"
-		);*/
+		);
 		$campus = array(
 			"option" => "select",
 			"type"   => "result",
