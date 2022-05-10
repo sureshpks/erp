@@ -28,7 +28,7 @@
                             </div>
                         </div>
                         <div class="widget-content widget-content-area">
-                            <form method="post" onSubmit="return form_validate();" id="designation_form" action="<?php echo base_url();?>index.php/backend/master/designation/update">
+                            <form method="post" onSubmit="return validate('designation_form');" id="designation_form" action="<?php echo base_url();?>index.php/backend/master/designation/update">
                             <input type="hidden" name="hidden_id" value="0" id="hidden_id">
                             <div class="row clearfix">
                                 <div class="col-sm-12">
@@ -122,27 +122,6 @@ $(document).ready(function(){
         });
     <?php } ?>
 });
-function form_validate(){ 
-    var flag = true;
-    $('#designation_form').find('.field_required').each(function(){ 
-        if($(this).val() == ''){
-             $(this).parent('div').addClass('has-danger');
-             $(this).addClass('forn-control-danger');
-             flag = false;
-             swal({
-                title: "Oops...",
-                text: "Please Enter the Required Field...!",
-                timer: 2000,
-                type: "error",
-                showConfirmButton: false
-             });
-        }else{
-            $(this).parent('div').removeClass('has-danger');
-             $(this).removeClass('forn-control-danger');
-        }
-    });
-    return flag;
-}
 function edit(id){
     $('#popup_title').html('');
     $('#popup_btn').html('');

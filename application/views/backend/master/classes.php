@@ -63,7 +63,7 @@
                                     <tfoot>
                                         <tr>
                                             <th colspan="2">
-                                                <form method="post" onSubmit="return stream_form_validate();" id="stream_form" action="<?php echo base_url();?>index.php/backend/master/classes/stream_update">
+                                                <form method="post" onSubmit="return validate('stream_form');" id="stream_form" action="<?php echo base_url();?>index.php/backend/master/classes/stream_update">
                                                     <input type="hidden" name="stream_id" id="stream_id" value="0">
                                                     <input type="hidden" name="stream_campus" id="stream_campus" value="<?php echo $campus_id;?>">
                                                     <input type="text" name="stream_name" id="stream_name" class="form-control field_required" style="width: 80%;float: left;" placeholder="Enter the Stream Name">
@@ -101,7 +101,7 @@
                                     <tfoot>
                                         <tr>
                                             <th colspan="2">
-                                                <form method="post" onSubmit="return class_form_validate();" id="class_form" action="<?php echo base_url();?>index.php/backend/master/classes/class_update">
+                                                <form method="post" onSubmit="return validate('class_form');" id="class_form" action="<?php echo base_url();?>index.php/backend/master/classes/class_update">
                                                     <input type="hidden" name="class_id" id="class_id" value="0">
                                                     <input type="hidden" name="class_campus" id="class_campus" value="<?php echo $campus_id;?>">
                                                     <input type="text" name="class_name" id="class_name" class="form-control field_required" style="width: 80%;float: left;" placeholder="Enter the class name">
@@ -138,7 +138,7 @@
                                     <tfoot>
                                         <tr>
                                             <th colspan="2">
-                                                <form method="post" onSubmit="return class_section_form_validate();" id="class_section_form" action="<?php echo base_url();?>index.php/backend/master/classes/class_section_update">
+                                                <form method="post" onSubmit="return validate('class_section_form');" id="class_section_form" action="<?php echo base_url();?>index.php/backend/master/classes/class_section_update">
                                                     <input type="hidden" name="class_section_id" id="class_section_id" value="0">
                                                     <input type="hidden" name="class_section_campus" id="class_section_campus" value="<?php echo $campus_id;?>">
                                                     <input type="text" name="class_section_name" id="class_section_name" class="form-control field_required" style="width: 80%;float: left;" placeholder="Section name">
@@ -182,28 +182,6 @@ $(document).ready(function(){
     <?php } ?>
 });
 //STREAM SCTION
-function stream_form_validate(){ 
-    var flag = true;
-    $('#stream_form').find('.field_required').each(function(){ 
-        if($(this).val() == ''){
-             $(this).parent('div').addClass('has-danger');
-             $(this).addClass('forn-control-danger');
-             flag = false;
-             swal({
-                title: "Oops...",
-                text: "Please Enter the Required Field...!",
-                timer: 2000,
-                type: "error",
-                showConfirmButton: false
-             });
-        }else{
-            $(this).parent('div').removeClass('has-danger');
-             $(this).removeClass('forn-control-danger');
-        }
-    });
-    return flag;
-}
-
 function editStream(id){
     $('#stream_id').val(0); 
     $('#stream_name').val('');
@@ -224,28 +202,6 @@ function editStream(id){
 }
 
 //CLASS SECTION
-function class_form_validate(){ 
-    var flag = true;
-    $('#class_form').find('.field_required').each(function(){ 
-        if($(this).val() == ''){
-             $(this).parent('div').addClass('has-danger');
-             $(this).addClass('forn-control-danger');
-             flag = false;
-             swal({
-                title: "Oops...",
-                text: "Please Enter the Required Field...!",
-                timer: 2000,
-                type: "error",
-                showConfirmButton: false
-             });
-        }else{
-            $(this).parent('div').removeClass('has-danger');
-             $(this).removeClass('forn-control-danger');
-        }
-    });
-    return flag;
-}
-
 function editClass(id){
     $('#class_id').val(0); 
     $('#class_name').val('');
@@ -265,28 +221,6 @@ function editClass(id){
      });
 }
 //CLASS SECTION SECTION
-function class_section_form_validate(){ 
-    var flag = true;
-    $('#class_section_form').find('.field_required').each(function(){ 
-        if($(this).val() == ''){
-             $(this).parent('div').addClass('has-danger');
-             $(this).addClass('forn-control-danger');
-             flag = false;
-             swal({
-                title: "Oops...",
-                text: "Please Enter the Required Field...!",
-                timer: 2000,
-                type: "error",
-                showConfirmButton: false
-             });
-        }else{
-            $(this).parent('div').removeClass('has-danger');
-             $(this).removeClass('forn-control-danger');
-        }
-    });
-    return flag;
-}
-
 function classSectionEdit(id){
     $('#class_section_id').val(0); 
     $('#class_section_name').val('');

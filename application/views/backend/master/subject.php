@@ -51,29 +51,29 @@
                                 </div>
                             </div>
                             <div class="widget-content widget-content-area">
-                                <form method="post" onSubmit="return form_validate();" id="subject_form" action="<?php echo base_url();?>index.php/backend/master/subject/update">
+                                <form method="post" onSubmit="return validate('subject_form');" id="subject_form" action="<?php echo base_url();?>index.php/backend/master/subject/update">
                                 <input type="hidden" name="subject_id" value="0" id="subject_id">
                                 <input type="hidden" name="campus_id" value="0" id="campus_id">
                                 <div class="row clearfix">
                                     <div class="col-sm-12">
-                                        <b>Subject Name</b>
                                         <div class="form-group">
+                                            <label>Subject Name</label>
                                             <input type="text" class="form-control field_required" id="subject_name" name="subject_name">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row clearfix">
                                     <div class="col-sm-12">
-                                        <b>Subject Code</b>
                                         <div class="form-group">
+                                            <label>Subject Code</label>
                                             <input type="text" class="form-control field_required" id="subject_code" name="subject_code">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row clearfix">
                                     <div class="col-sm-12">
-                                        <b>Subject Type</b>
                                         <div class="form-group">
+                                            <label>Subject Type</label>
                                             <select class="form-control" name="subject_type" id="subject_type">
                                                 <option value="Theory">Theory</option>
                                                 <option value="Practical">Practical</option>
@@ -83,8 +83,8 @@
                                 </div>
                                 <div class="row clearfix">
                                     <div class="col-sm-12">
-                                        <b>Class</b>
                                         <div class="form-group">
+                                            <label>Class</label>
                                             <select class="form-control field_required" name="class_id_fk" id="class_id_fk">
                                                 <option value="">-Select-</option>
                                                 <?php if($class_results){ ?>
@@ -98,8 +98,8 @@
                                 </div>
                                 <div class="row clearfix">
                                     <div class="col-sm-12">
-                                        <b>Stream</b>
                                         <div class="form-group">
+                                            <label>Stream</label>
                                             <select class="form-control field_required" name="stream_id_fk" id="stream_id_fk">
                                                 <option value="">-Select-</option>
                                                  <?php if($stream_results){ ?>
@@ -113,8 +113,8 @@
                                 </div>
                                 <div class="row clearfix">
                                     <div class="col-sm-12">
-                                        <b>Subject Status</b>
                                         <div class="form-group">
+                                            <label>Subject Status</label>
                                             <select class="form-control" name="subject_status" id="subject_status">
                                                 <option value="0">Active</option>
                                                 <option value="1">In-Active</option>
@@ -206,27 +206,6 @@ $(document).ready(function(){
         });
     <?php } ?>
 });
-function form_validate(){ 
-    var flag = true;
-    $('#subject_form').find('.field_required').each(function(){ 
-        if($(this).val() == ''){
-             $(this).parent('div').addClass('has-danger');
-             $(this).addClass('forn-control-danger');
-             flag = false;
-             swal({
-                title: "Oops...",
-                text: "Please Enter the Required Field...!",
-                timer: 2000,
-                type: "error",
-                showConfirmButton: false
-             });
-        }else{
-            $(this).parent('div').removeClass('has-danger');
-             $(this).removeClass('forn-control-danger');
-        }
-    });
-    return flag;
-}
 
 function editSubject(id){
     $('#subject_id').val(0);
