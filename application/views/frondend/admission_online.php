@@ -18,7 +18,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <link rel="stylesheet" href="<?php echo base_url();?>frontend/css/style.css"/>
 </head>
 <body>
-	<div class="page-content" style="background-image: url('<?php echo base_url();?>frontend/images/wizard-v4.jpg')">
+	<div class="page-content" style="background-image: url('<?php echo base_url();?>frondend/images/wizard-v4.jpg')">
 		<div class="wizard-v4-content">
 			<div class="wizard-form">
 				<div class="wizard-header">
@@ -37,7 +37,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 						</div>
 					</div>
 				</div>
-		        <form class="form-register" action="#" method="post">
+		        <form class="form-register" id="admission_online" action="<?php echo base_url();?>index.php/frondend/admission_online/save" method="post" onSubmit="return validate('admission_online');">
 		        	<div id="form-total">
 		        		<!-- SECTION 1 -->
 			            <h2>
@@ -49,9 +49,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			                	<h3>General Information:</h3>
 			                	<div class="form-row">
 									<div class="form-holder form-holder-2">
-										<select name="campus" id="campus">
-											<option value="" selected>Campus</option>
-										</select>
+										<select class="form-control field_required" name="campus" id="campus">
+                                        <?php
+
+                                        foreach($campus_result as $campus)
+                                        { 
+                                          echo '<option value="'.$campus->campus_id.'">'.$campus->campus_name.'</option>';
+                                        }
+                                        ?>
+                                        </select>
 									</div>
 									<div class="form-holder form-holder-2">
 										<select name="admission_class" id="admission_class">
@@ -60,14 +66,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 									</div>
 									<div class="form-holder form-holder-2">
 										<label class="form-row-inner">
-											<input type="text" class="form-control" id="first-name" name="first-name" required>
+											<input type="text" class="form-control field_required" id="first-name" name="first-name" required>
 											<span class="label">First Name</span>
 					  						<span class="border"></span>
 										</label>
 									</div>
 									<div class="form-holder form-holder-2">
 										<label class="form-row-inner">
-											<input type="text" class="form-control" id="last-name" name="last-name" required>
+											<input type="text" class="form-control field_required" id="last-name" name="last-name" required>
 											<span class="label">Last Name</span>
 					  						<span class="border"></span>
 										</label>
@@ -81,7 +87,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 								<div class="form-row">
 									<div class="form-holder form-holder-2">
 										<label class="form-row-inner">
-											<input type="text" class="form-control" id="dob" name="dob" required>
+											<input type="text" class="form-control field_required" id="dob" name="dob" required>
 											<span class="label">Date of Birth</span>
 					  						<span class="border"></span>
 										</label>
@@ -103,7 +109,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 									</div>
 									<div class="form-holder form-holder-2">
 										<label class="form-row-inner">
-											<input type="text" class="form-control" id="caste" name="caste" required>
+											<input type="text" class="form-control field_required" id="caste" name="caste" required>
 											<span class="label">Caste</span>
 					  						<span class="border"></span>
 										</label>
@@ -135,14 +141,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 								<div class="form-row">
 									<div class="form-holder form-holder-2">
 										<label class="form-row-inner">
-											<input type="text" class="form-control" id="medical_history_detail" name="medical_history_detail" required>
+											<input type="text" class="form-control field_required" id="medical_history_detail" name="medical_history_detail" required>
 											<span class="label">Medical History / Current Medication Detail</span>
 					  						<span class="border"></span>
 										</label>
 									</div>
 									<div class="form-holder form-holder-2">
 										<label class="form-row-inner">
-											<input type="text" class="form-control" id="handicap_detail" name="handicap_detail" required>
+											<input type="text" class="form-control field_required" id="handicap_detail" name="handicap_detail" required>
 											<span class="label">Disability / Handicap Detail</span>
 					  						<span class="border"></span>
 										</label>
@@ -168,28 +174,28 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 									</div>
 									<div class="form-holder form-holder-2">
 										<label class="form-row-inner">
-											<input type="text" class="form-control" id="father_name" name="father_name" required>
+											<input type="text" class="form-control field_required" id="father_name" name="father_name" required>
 											<span class="label">Father's Name</span>
 					  						<span class="border"></span>
 										</label>
 									</div>
 									<div class="form-holder form-holder-2">
 										<label class="form-row-inner">
-											<input type="text" class="form-control" id="father_initial" name="father_initial" required>
+											<input type="text" class="form-control field_required" id="father_initial" name="father_initial" required>
 											<span class="label">Father's Initial</span>
 					  						<span class="border"></span>
 										</label>
 									</div>
 									<div class="form-holder form-holder-2">
 										<label class="form-row-inner">
-											<input type="text" class="form-control" id="father_qualification" name="father_qualification" required>
+											<input type="text" class="form-control field_required" id="father_qualification" name="father_qualification" required>
 											<span class="label">Father's Qualification</span>
 					  						<span class="border"></span>
 										</label>
 									</div>
 									<div class="form-holder form-holder-2">
 										<label class="form-row-inner">
-											<input type="text" class="form-control" id="father_occupation" name="father_occupation" required>
+											<input type="text" class="form-control field_required" id="father_occupation" name="father_occupation" required>
 											<span class="label">Father's Occupation</span>
 					  						<span class="border"></span>
 										</label>
@@ -198,28 +204,28 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 								<div class="form-row">
 									<div class="form-holder form-holder-2">
 										<label class="form-row-inner">
-											<input type="text" class="form-control" id="mother_name" name="mother_name" required>
+											<input type="text" class="form-control field_required" id="mother_name" name="mother_name" required>
 											<span class="label">Mother's Name</span>
 					  						<span class="border"></span>
 										</label>
 									</div>
 									<div class="form-holder form-holder-2">
 										<label class="form-row-inner">
-											<input type="text" class="form-control" id="mother_initial" name="mother_initial" required>
+											<input type="text" class="form-control field_required" id="mother_initial" name="mother_initial" required>
 											<span class="label">Mother's Initial</span>
 					  						<span class="border"></span>
 										</label>
 									</div>
 									<div class="form-holder form-holder-2">
 										<label class="form-row-inner">
-											<input type="text" class="form-control" id="mother_qualification" name="mother_qualification" required>
+											<input type="text" class="form-control field_required" id="mother_qualification" name="mother_qualification" required>
 											<span class="label">Mother's Qualification</span>
 					  						<span class="border"></span>
 										</label>
 									</div>
 									<div class="form-holder form-holder-2">
 										<label class="form-row-inner">
-											<input type="text" class="form-control" id="mother_occupation" name="mother_occupation" required>
+											<input type="text" class="form-control field_required" id="mother_occupation" name="mother_occupation" required>
 											<span class="label">Mother's Occupation</span>
 					  						<span class="border"></span>
 										</label>
@@ -229,28 +235,28 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 								<div class="form-row">
 									<div class="form-holder form-holder-2">
 										<label class="form-row-inner">
-											<input type="text" class="form-control" id="door_no" name="door_no" required>
+											<input type="text" class="form-control field_required" id="door_no" name="door_no" required>
 											<span class="label">DOOR NO.</span>
 					  						<span class="border"></span>
 										</label>
 									</div>
 									<div class="form-holder form-holder-2">
 										<label class="form-row-inner">
-											<input type="text" class="form-control" id="street_address" name="street_address" required>
+											<input type="text" class="form-control field_required" id="street_address" name="street_address" required>
 											<span class="label">Street Address</span>
 					  						<span class="border"></span>
 										</label>
 									</div>
 									<div class="form-holder form-holder-2">
 										<label class="form-row-inner">
-											<input type="text" class="form-control" id="locality" name="locality" required>
+											<input type="text" class="form-control field_required" id="locality" name="locality" required>
 											<span class="label">Locality</span>
 					  						<span class="border"></span>
 										</label>
 									</div>
 									<div class="form-holder form-holder-2">
 										<label class="form-row-inner">
-											<input type="text" class="form-control" id="city" name="city" required>
+											<input type="text" class="form-control field_required" id="city" name="city" required>
 											<span class="label">City</span>
 					  						<span class="border"></span>
 										</label>
@@ -267,7 +273,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 									</div>
 									<div class="form-holder form-holder-2">
 										<label class="form-row-inner">
-											<input type="text" class="form-control" id="pincode" name="pincode" required>
+											<input type="text" class="form-control field_required" id="pincode" name="pincode" required>
 											<span class="label">Pincode</span>
 					  						<span class="border"></span>
 										</label>
@@ -277,28 +283,28 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 								<div class="form-row">
 									<div class="form-holder form-holder-2">
 										<label class="form-row-inner">
-											<input type="text" class="form-control" id="parent_door_no" name="parent_door_no" required>
+											<input type="text" class="form-control field_required" id="parent_door_no" name="parent_door_no" required>
 											<span class="label">DOOR NO.</span>
 					  						<span class="border"></span>
 										</label>
 									</div>
 									<div class="form-holder form-holder-2">
 										<label class="form-row-inner">
-											<input type="text" class="form-control" id="parent_street_address" name="parent_street_address" required>
+											<input type="text" class="form-control field_required" id="parent_street_address" name="parent_street_address" required>
 											<span class="label">Street Address</span>
 					  						<span class="border"></span>
 										</label>
 									</div>
 									<div class="form-holder form-holder-2">
 										<label class="form-row-inner">
-											<input type="text" class="form-control" id="parent_locality" name="parent_locality" required>
+											<input type="text" class="form-control field_required" id="parent_locality" name="parent_locality" required>
 											<span class="label">Locality</span>
 					  						<span class="border"></span>
 										</label>
 									</div>
 									<div class="form-holder form-holder-2">
 										<label class="form-row-inner">
-											<input type="text" class="form-control" id="parent_city" name="parent_city" required>
+											<input type="text" class="form-control field_required" id="parent_city" name="parent_city" required>
 											<span class="label">City</span>
 					  						<span class="border"></span>
 										</label>
@@ -315,7 +321,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 									</div>
 									<div class="form-holder form-holder-2">
 										<label class="form-row-inner">
-											<input type="text" class="form-control" id="parent_pincode" name="parent_pincode" required>
+											<input type="text" class="form-control field_required" id="parent_pincode" name="parent_pincode" required>
 											<span class="label">Pincode</span>
 					  						<span class="border"></span>
 										</label>
@@ -324,21 +330,21 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 								<div class="form-row">
 									<div class="form-holder form-holder-2">
 										<label class="form-row-inner">
-											<input type="text" class="form-control" id="primary_nobile_no" name="primary_nobile_no" required>
+											<input type="text" class="form-control field_required" id="primary_nobile_no" name="primary_nobile_no" required>
 											<span class="label">Primary Mobile No.</span>
 					  						<span class="border"></span>
 										</label>
 									</div>
 									<div class="form-holder form-holder-2">
 										<label class="form-row-inner">
-											<input type="text" class="form-control" id="secondary_mobile_no" name="secondary_mobile_no" required>
+											<input type="text" class="form-control field_required" id="secondary_mobile_no" name="secondary_mobile_no" required>
 											<span class="label">Secondary Mobile No</span>
 					  						<span class="border"></span>
 										</label>
 									</div>
 									<div class="form-holder form-holder-2">
 										<label class="form-row-inner">
-											<input type="text" class="form-control" id="parent_email" name="parent_email" required>
+											<input type="text" class="form-control field_required" id="parent_email" name="parent_email" required>
 											<span class="label">Email Address</span>
 					  						<span class="border"></span>
 										</label>
@@ -366,7 +372,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 								<div class="form-row">
 									<div class="form-holder form-holder-2">
 										<label class="form-row-inner">
-											<input type="text" class="form-control" id="last_school_name" name="last_school_name" required>
+											<input type="text" class="form-control field_required" id="last_school_name" name="last_school_name" required>
 											<span class="label">Last School Name</span>
 											<span class="border"></span>
 										</label>
@@ -383,7 +389,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 									</div>
 									<div class="form-holder form-holder-2">
 										<label class="form-row-inner">
-											<input type="text" class="form-control" id="affiliated_detail" name="affiliated_detail" required>
+											<input type="text" class="form-control field_required" id="affiliated_detail" name="affiliated_detail" required>
 											<span class="label">Previous school affiliated Detail</span>
 											<span class="border"></span>
 										</label>
@@ -392,14 +398,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 								<div class="form-row">
 									<div class="form-holder form-holder-2">
 										<label class="form-row-inner">
-											<input type="text" class="form-control" id="aadhar" name="aadhar" required>
+											<input type="text" class="form-control field_required" id="aadhar" name="aadhar" required>
 											<span class="label">Aadhar Card Number </span>
 											<span class="border"></span>
 										</label>
 									</div>
 									<div class="form-holder form-holder-2">
 										<label class="form-row-inner">
-											<input type="text" class="form-control" id="emis_no" name="emis_no" required>
+											<input type="text" class="form-control field_required" id="emis_no" name="emis_no" required>
 											<span class="label">EMIS Number (from the previous school)</span>
 											<span class="border"></span>
 										</label>
@@ -408,14 +414,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 								<div class="form-row">
 									<div class="form-holder form-holder-2">
 										<label class="form-row-inner">
-											<input type="text" class="form-control" id="awards" name="awards" required>
+											<input type="text" class="form-control field_required" id="awards" name="awards" required>
 											<span class="label">Awards Received in Sports or Co-Curricular Activities</span>
 											<span class="border"></span>
 										</label>
 									</div>
 									<div class="form-holder form-holder-2">
 										<label class="form-row-inner">
-											<input type="text" class="form-control" id="reference" name="reference" required>
+											<input type="text" class="form-control field_required" id="reference" name="reference" required>
 											<span class="label">Reference</span>
 											<span class="border"></span>
 										</label>
@@ -434,28 +440,28 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			                	<div class="form-row">
 									<div class="form-holder form-holder-2">
 										<label class="form-row-inner">
-											<input type="text" class="form-control" id="payer_first_name" name="payer_first_name" required>
+											<input type="text" class="form-control field_required" id="payer_first_name" name="payer_first_name" required>
 											<span class="label">Payer First Name</span>
 											<span class="border"></span>
 										</label>
 									</div>
 									<div class="form-holder form-holder-2">
 										<label class="form-row-inner">
-											<input type="text" class="form-control" id="payer_last_name" name="payer_last_name" required>
+											<input type="text" class="form-control field_required" id="payer_last_name" name="payer_last_name" required>
 											<span class="label">Payer Last Name</span>
 											<span class="border"></span>
 										</label>
 									</div>
 									<div class="form-holder form-holder-2">
 										<label class="form-row-inner">
-											<input type="text" class="form-control" id="payer_mobile_no" name="payer_mobile_no" required>
+											<input type="text" class="form-control field_required" id="payer_mobile_no" name="payer_mobile_no" required>
 											<span class="label">Payer Mobile No.</span>
 											<span class="border"></span>
 										</label>
 									</div>
 									<div class="form-holder form-holder-2">
 										<label class="form-row-inner">
-											<input type="text" class="form-control" id="payer_email" name="payer_email" required>
+											<input type="text" class="form-control field_required" id="payer_email" name="payer_email" required>
 											<span class="label">Payer Email</span>
 											<span class="border"></span>
 										</label>
@@ -488,3 +494,27 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<script src="<?php echo base_url();?>frontend/js/main.js"></script>
 </body>
 </html>
+<script type="text/javascript">
+function validate(form_id){ 
+	alert(form_id);
+    var flag = true;
+    $('#academic_form').find('.field_required').each(function(){ 
+        if($(this).val() == ''){
+             $(this).parent('div').addClass('has-danger');
+             $(this).addClass('forn-control-danger');
+             flag = false;
+             swal({
+                title: "Oops...",
+                text: "Please Enter the Required Field...!",
+                timer: 2000,
+                type: "error",
+                showConfirmButton: false
+             });
+        }else{
+            $(this).parent('div').removeClass('has-danger');
+             $(this).removeClass('forn-control-danger');
+        }
+    });
+    return flag;
+}
+</script>

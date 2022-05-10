@@ -93,6 +93,18 @@
                         <li>
                             <a href="<?php echo base_url();?>index.php/backend/master/designation">Designation</a>
                         </li>
+                        <li>
+                            <a href="<?php echo base_url();?>index.php/backend/master/country">Country</a>
+                        </li>
+                        <li>
+                            <a href="<?php echo base_url();?>index.php/backend/master/nationality">Nationality</a>
+                        </li>
+                        <li>
+                            <a href="<?php echo base_url();?>index.php/backend/master/state">State</a>
+                        </li>
+                        <li>
+                            <a href="<?php echo base_url();?>index.php/backend/master/blood_group">Blood Group</a>
+                        </li>
                     </ul>
                 </div>
                 <div class="submenu" id="people">
