@@ -28,20 +28,20 @@
                             </div>
                         </div>
                         <div class="widget-content widget-content-area">
-                            <form method="post" onSubmit="return form_validate();" id="country_form" action="<?php echo base_url();?>index.php/backend/master/country/update">
+                            <form method="post" onSubmit="return validate('country_form');" id="country_form" action="<?php echo base_url();?>index.php/backend/master/country/update">
                             <input type="hidden" name="hidden_id" value="0" id="hidden_id">
                             <div class="row clearfix">
                                 <div class="col-sm-12">
-                                    <b>State</b>
                                     <div class="form-group">
+                                        <label>State</label>
                                         <input type="text" class="form-control field_required" id="country" name="country">
                                     </div>
                                 </div>
                             </div>
                              <div class="row clearfix">
                                 <div class="col-sm-12">
-                                    <b>Country Status</b>
                                     <div class="form-group">
+                                        <label>Country Status</label>
                                         <select class="form-control" name="country_status" id="country_status">
                                             <option value="0">Active</option>
                                             <option value="1">In-Active</option>
@@ -76,9 +76,9 @@
                                     <?php foreach($results as $key => $result){ ?>
                                         <tr>
                                             <td><?php echo $key+1;?></td>
-                                            <td><?php echo $result->country;?></td>
+                                            <td><?php echo $result->name;?></td>
                                              <td>
-                                                <?php if($result->country_status == 0){ ?>
+                                                <?php if($result->status == 0){ ?>
                                                     <label class="btn-sm btn-primary">Active</label>
                                                 <?php }else{ ?>
                                                     <label class="btn-sm btn-danger">In-Active</label>
@@ -123,27 +123,7 @@ $(document).ready(function(){
         });
     <?php } ?>
 });
-function form_validate(){ 
-    var flag = true;
-    $('#country_form').find('.field_required').each(function(){ 
-        if($(this).val() == ''){
-             $(this).parent('div').addClass('has-danger');
-             $(this).addClass('forn-control-danger');
-             flag = false;
-             swal({
-                title: "Oops...",
-                text: "Please Enter the Required Field...!",
-                timer: 2000,
-                type: "error",
-                showConfirmButton: false
-             });
-        }else{
-            $(this).parent('div').removeClass('has-danger');
-             $(this).removeClass('forn-control-danger');
-        }
-    });
-    return flag;
-}
+
 function edit(id){
     $('#popup_title').html('');
     $('#popup_btn').html('');

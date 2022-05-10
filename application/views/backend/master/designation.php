@@ -32,16 +32,16 @@
                             <input type="hidden" name="hidden_id" value="0" id="hidden_id">
                             <div class="row clearfix">
                                 <div class="col-sm-12">
-                                    <b>Designation</b>
                                     <div class="form-group">
+                                        <label>Designation</label>
                                         <input type="text" class="form-control field_required" id="designation" name="designation">
                                     </div>
                                 </div>
                             </div>
                              <div class="row clearfix">
                                 <div class="col-sm-12">
-                                    <b>Designation Status</b>
                                     <div class="form-group">
+                                        <label>Designation Status</label>
                                         <select class="form-control" name="designation_status" id="designation_status">
                                             <option value="0">Active</option>
                                             <option value="1">In-Active</option>
