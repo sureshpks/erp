@@ -35,6 +35,10 @@
             color: #FF3636;
             background-color: rgba(222, 222, 222, 0.1);
         }
+        .has-danger label {
+            color: #FF3636;
+            background-color: rgba(222, 222, 222, 0.1);
+        }
     </style>
 </head>
 <body class="sidebar-noneoverflow">

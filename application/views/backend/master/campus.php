@@ -71,44 +71,44 @@
             </div>
 
             <div class="modal-body">
-            <form method="post" onSubmit="return form_validate();" id="campus_form" action="<?php echo base_url();?>index.php/backend/master/campus/update">
+            <form method="post" onSubmit="return validate('campus_form');" id="campus_form" action="<?php echo base_url();?>index.php/backend/master/campus/update">
                 <input type="hidden" name="hidden_id" value="0" id="hidden_id">
                 <div class="row clearfix">
                     <div class="col-sm-12">
-                        <b>Campus Name</b>
                         <div class="form-group">
+                            <label>Campus Name</label>
                             <input type="text" class="form-control field_required" id="campus_name" name="campus_name">
                         </div>
                     </div>
                 </div>
                 <div class="row clearfix">
                     <div class="col-sm-12">
-                        <b>Campus Address</b>
                         <div class="form-group">
+                            <label>Campus Address</label>
                             <textarea class="form-control field_required" id="campus_address" name="campus_address"></textarea>
                         </div>
                     </div>
                 </div>
                 <div class="row clearfix">
                     <div class="col-sm-12">
-                        <b>Principal Name</b>
                         <div class="form-group">
+                            <label>Principal Name</label>
                             <input type="text" class="form-control field_required" id="principal_name" name="principal_name">
                         </div>
                     </div>
                 </div>
                 <div class="row clearfix">
                     <div class="col-sm-12">
-                        <b>Mobile No.</b>
                         <div class="form-group">
+                            <label>Mobile No.</label>
                             <input type="text" class="form-control field_required" id="mobile_no" name="mobile_no">
                         </div>
                     </div>
                 </div>
                 <div class="row clearfix">
                     <div class="col-sm-12">
-                        <b>Campus Status</b>
                         <div class="form-group">
+                            <label>Campus Status</label>
                             <select class="form-control" name="status" id="status">
                                 <option value="0">Active</option>
                                 <option value="1">In-Active</option>
@@ -170,28 +170,6 @@ function edit(id){
         $('#status').val(data.status);
        }
      });
-}
-
-function form_validate(){ 
-    var flag = true;
-    $('#campus_form').find('.field_required').each(function(){ 
-        if($(this).val() == ''){
-             $(this).parent('div').addClass('has-danger');
-             $(this).addClass('forn-control-danger');
-             flag = false;
-             swal({
-                title: "Oops...",
-                text: "Please Enter the Required Field...!",
-                timer: 2000,
-                type: "error",
-                showConfirmButton: false
-             });
-        }else{
-            $(this).parent('div').removeClass('has-danger');
-             $(this).removeClass('forn-control-danger');
-        }
-    });
-    return flag;
 }
 
 $(document).ready(function(){

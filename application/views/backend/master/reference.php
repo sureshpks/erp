@@ -28,20 +28,20 @@
                             </div>
                         </div>
                         <div class="widget-content widget-content-area">
-                            <form method="post" onSubmit="return form_validate();" id="reference_form" action="<?php echo base_url();?>index.php/backend/master/reference/update">
+                            <form method="post" onSubmit="return validate('reference_form');" id="reference_form" action="<?php echo base_url();?>index.php/backend/master/reference/update">
                             <input type="hidden" name="hidden_id" value="0" id="hidden_id">
                             <div class="row clearfix">
                                 <div class="col-sm-12">
-                                    <b>Reference</b>
                                     <div class="form-group">
+                                        <label>Reference</label>
                                         <input type="text" class="form-control field_required" id="reference" name="reference">
                                     </div>
                                 </div>
                             </div>
                              <div class="row clearfix">
                                 <div class="col-sm-12">
-                                    <b>Reference Status</b>
                                     <div class="form-group">
+                                        <label>Reference Status</label>
                                         <select class="form-control" name="reference_status" id="reference_status">
                                             <option value="0">Active</option>
                                             <option value="1">In-Active</option>
@@ -123,27 +123,6 @@ $(document).ready(function(){
         });
     <?php } ?>
 });
-function form_validate(){ 
-    var flag = true;
-    $('#reference_form').find('.field_required').each(function(){ 
-        if($(this).val() == ''){
-             $(this).parent('div').addClass('has-danger');
-             $(this).addClass('forn-control-danger');
-             flag = false;
-             swal({
-                title: "Oops...",
-                text: "Please Enter the Required Field...!",
-                timer: 2000,
-                type: "error",
-                showConfirmButton: false
-             });
-        }else{
-            $(this).parent('div').removeClass('has-danger');
-             $(this).removeClass('forn-control-danger');
-        }
-    });
-    return flag;
-}
 function edit(id){
     $('#popup_title').html('');
     $('#popup_btn').html('');
